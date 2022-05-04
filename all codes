@@ -79,7 +79,7 @@ ________________________________________________________________________________
 # Write a program to demonstrate locks in threads
 
 import _thread
-import time
+import threading
 
 def fun1(n):
     t.acquire_lock()
