@@ -1,0 +1,518 @@
+
+
+_______________________________________________________________________
+#1B
+#Write a program to copy image file
+
+me=open("C:\\Users\\a2z\\Desktop\\fuf.jpg","rb")
+ne=open("C:\\Users\\a2z\\Desktop\\fu#ck.jpg","wb")
+ne.write(se.read())
+me.close()
+ne.close()
+
+__________________________________________________________________________
+2A
+
+Program to find name and age from string
+
+import re
+str= """Sam is 15 years old, and Anu is 27 years old.
+Avi is 67 years old, and his grandfather, Ram is 102"""
+name=re.findall('[A-Z][a-z]*',str)
+age=re.findall('[0-9]+',str)
+for i in range (len(name)):
+	voe=age[i]
+	print(name[i],"age is",voe)
+
+____________________________________________________________________________________________________________________________
+
+2B 
+
+Replacing White Space with '_' Charcter
+
+#PERFORM THIS IN PYTHON SHELL
+
+import re
+str="Learning Python is fun"
+re.sub("\s","_",str)
+____________________________________________________________________________________________________________________________
+
+2C
+Program to split lines
+
+#Program to split lines
+import re 
+str="""This is line one of multiline line text
+Line 2
+Line 3 \and line 4"""
+result=re.split("\n",str)
+print(result)
+
+____________________________________________________________________________________________________________________________
+#3A
+# Write a program to copy files using thread
+
+import _thread
+import time
+
+def fun1():
+    f1 = open("Wildlife.wmv","rb")
+    f2 = open("W1.wmv","wb")
+    f2.write(f1.read())
+    f1.close()
+    f2.close()
+
+def fun2():
+    f1 = open("robin.mp4","rb")
+    f2 = open("robin2.mp4","wb")
+    f2.write(f1.read())
+    f1.close()
+    f2.close()
+
+start_time = time.time()
+_thread.start_new_thread(fun1,())
+_thread.start_new_thread(fun2,())
+print("Time Taken: ",(time.time() - start_time))
+__________________________________________________________________________________________________________________________
+
+#3B
+# Write a program to demonstrate locks in threads
+
+import _thread
+import time
+
+def fun1(n):
+    t.acquire_lock()
+    for i in range(1,n):
+        print("\nT1")
+    t.release_lock()
+  
+def fun2(n):
+    t.acquire_lock()
+    for i in range(1,n):
+        print("\mT2")
+    t.release_lock()
+    
+start_time = time.time()
+_thread.start_new_thread(fun1,(5,))
+_thread.start_new_thread(fun2,(4,))
+print("Time Taken: ",(time.time() - start_time))
+__________________________________________________________________________________________________________________________
+
+#4A
+#Write a Python Program to create a database 
+
+import mysql.connector
+mydb=mysql.connector.connect(host="localhost",user="root",password="root")
+mycursor=mydb.cursor()
+mycursor.execute("CREATE DATABASE Fycs2")
+print("Database Created")
+___________________________________________________________________________________________________________
+#4B
+#Write a Python Program to create table
+
+import mysql.connector
+mydb=mysql.connector.connect(host="localhost",user="root",password="root",database="Fycs2")
+mycursor=mydb.cursor()
+mycursor.execute("Create table stud(dname varchar(20),rn int)")
+print("table created")
+___________________________________________________________________________________________________________
+#4C
+#Write a Python Program to insert record
+
+import mysql.connector
+mydb=mysql.connector.connect(host="localhost",user="root",password="root",database="Fycs2")
+mycursor=mydb.cursor()
+sql="Insert INTO stud(dname,rn)values(%S,%S)"
+val=("ram",2)
+mycursor.execute(sql.val)
+mydb.commit()
+print("Record Inserted")
+_________________________________________________________________________________________________________
+#4D
+#Write a Python Program to insert multiple records.
+
+import mysql.connector
+mydb=mysql.connector.connect(host="localhost",user="root",password="root",database="Fycs2")
+mycursor=mydb.cursor()
+
+sql="INSERT INTO stud (dname,rn)values(%S,%S)"
+
+val=[
+    ('Peter',4),
+    ('Amy',6)
+    ('Hannah',27)]
+
+mycursor.execute many(sql,val)
+mydb.commit()
+print("Recorded Inserted")
+______________________________________________________________________________________________________
+#4E
+#Write a python program to insert multiple records.
+
+import mysql.connector
+mydb=mysql.connector.connect(host="localhost",user="root",password="root",database="Fycs2")
+mycursor=mydb.cursor()
+
+mycursor.execute("SELECT" FROM "stud")
+myresult = mycursor.fetchall()
+for x in myresult:
+    print(x)
+_______________________________________________________________________________________________________
+#5A
+Write a program to handle runtime exceptions
+
+randomList = [10,'a', 0, 2]
+
+for i in randomList:
+    try:
+        print("The entry is", i)
+        r = 1/int(i)
+    except Exception as e:
+        print("Oops!", e, "occurred.")
+    else:    
+        print("The reciprocal of", i, "is", r)
+    finally:
+        print()
+
+_______________________________________________________________________________________________________
+#5B
+ Write a program to read integer value from file and print sum, throw an exception if file name is invalid or value is non integer
+
+fn=input('Enter File Name with extension:')
+try:
+    f=open(fn,'r')
+    sum=0
+    for data in f:
+        sum=sum+int(data)
+except FileNotFoundError:
+    print('Wrong File name Entered')
+except ValueError:
+    print('File containing a non-int element')
+else:
+    print('Sum of all numbers:=',sum)
+    f.close()
+________________________________________________________________________________________________________
+#5C
+
+Write a program to print sum of even numbers and print exception if number is not even.
+
+ try:
+    sum=0
+    for i in range(5):
+        n=int(input('Enter Even number:'))
+        if n%2!=0:
+            raise Exception( "Enter only Even Number")
+        else:
+            sum=sum+n
+except Exception as e:
+    print(e)
+else:        
+    print('Sum:',sum)
+
+__________________________________________________________________________________________________________
+
+#5D
+ Write a program to calculate simple interest. Throw an exception if interest rate is greater than 100.
+
+def simple_interest(amount, year, rate):
+    try:
+        if rate > 100:
+            raise ValueError(rate)
+        interest = (amount * year * rate) / 100
+        print('The Simple Interest is', interest)
+    except ValueError:
+        print('interest rate is out of range', rate)
+
+print('Case 1')
+simple_interest(800, 6, 8)
+
+print('Case 2')
+simple_interest(800, 6, 800)
+_______________________________________________________________________________________________________________
+#6A
+Create a class Circle constructed by radius
+
+class Circle:
+    pi=3.14
+    def __init__(self, r):
+        self.radius = r     
+    def area(self):
+        return self.radius**2*Circle.pi
+    def perimeter(self):
+        return 2*self.radius*Circle.pi
+
+c=[]
+for i in range(3):
+    r=int(input("Enter radius"))
+    c.append(Circle(r))
+for i in c:
+    print("Area of Circle:",i.area())
+    print("Perimeter of Circle:",i.perimeter())
+__________________________________________________________________________________________________________________
+#6B
+Write a program to demonstrate constructor and destructor.
+
+class Emp:
+    empcount=0
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+        Emp.empcount+=1
+    def dispEmp(self):
+      print ("Name : ", self.name,  "\nSalary: ", self.salary)
+    def __del__(self):
+        print("Object Removed")
+        Emp.empcount-=1
+emp1 = Emp("Sam", 72000)
+emp2 = Emp("Ram", 40000)
+emp1.dispEmp()
+emp2.dispEmp()
+print("Total Number of Employee:",Emp.empcount)
+del emp1
+print("Total Number of Employee:",Emp.empcount)
+_________________________________________________________________________________________________________________
+#6C
+Write a program to implement multilevel inheritance.
+
+class Stud:
+    def __init__(self,rn,name):
+        self.rn=rn
+        self.name=name
+class Marks(Stud):
+    def __init__(self, rn,name,m1,m2):
+        Stud.__init__(self, rn, name)
+        self.m1=m1
+        self.m2=m2
+    def calc(self):
+        self.tot=self.m1+self.m2
+        self.per=(self.tot*100)/200
+class Result(Marks):
+    def __init__(self,rn,name,m1,m2):
+        Marks.__init__(self, rn, name,m1, m2)
+    def disp(self):
+        self.calc()
+        if self.m1<40 or self.m2<40:
+            print(self.name,"Result:Fail")
+        elif self.per<60:
+            print(self.name,"Pass with Grade B")
+        elif self.per < 70:
+            print(self.name,"Pass with Grade A")
+        else:
+            print(self.name,"Pass with Grade O")
+s1=Result(1,"Sam",78,90)
+s2=Result(1,"Ram",28,40)
+
+s1.disp()
+s2.disp()
+___________________________________________________________________________________________________________________
+#7A
+#demonstrate operator overloading
+
+class Data:
+    def __init__(self,n):
+        self.n=n
+    def  __gt__(self, other):
+        if self.n > other.n:
+            return True
+        else:
+            return False
+    def __add__(self, other):
+        return(self.n+other.n)
+
+d1=Data(10)
+d2=Data(3)
+print("Addition of two objects:",d1+d2)
+print("Largest from two objects:")
+if d1 > d2:
+    print(d1.n,"is greater")
+else:
+    print(d2.n," is greater")
+input()
+_________________________________________________________________________________________________________
+7B
+Write a program to define a class shape with abstract method area.
+Define method area in class Rectangle and Triangle
+
+#class shape abstract method
+
+from abc import ABC,abstractmethod
+class Shape(ABC):
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+    @abstractmethod
+    def area(self):
+        pass
+class Rect(Shape):
+    def __init__(self,x,y):
+        Shape.__init__(self,x,y)
+    def area(self):
+        return(self.x*self.y)
+class Tri(Shape):
+    def __init__(self, x, y):
+        Shape.__init__(self, x, y)
+
+    def area(self):
+        return (self.x * self.y)/2
+r=Rect(2,3)
+t=Tri(5,6)
+print("Area of Rectangle:",r.area())
+print("Area of Triangle:",t.area())
+
+input()
+______________________________________________________________________________________________________________________
+
+7C
+Write a program to demonstrate method overriding
+
+#Demostrate overriding
+
+class Time:
+    def __init__(self,hr,min,sec):
+        self.hr=hr
+        self.min=min
+        self.sec=sec
+    def print(self):
+        print("Super Class Method Called",self.hr,":",self.min,":",self.sec)
+
+class Clock(Time):
+    def __init__(self,hr,min,sec):
+        Time.__init__(self, hr, min, sec)
+    def print(self):
+        super().print()
+        if self.hr<12:
+            self.str="AM"
+        else:
+            self.str="PM"
+        print("Sub Class Method Called",self.hr,":",self.min,":",self.sec,self.str)
+
+c=Clock(12,40,30)
+c.print()
+input()
+_______________________________________________________________________________________________________________________________
+
+8A
+
+#GUI read temperature
+
+from tkinter import *
+def exit():
+    win.destroy()
+def convert():
+    c = int(e1.get())
+    f = ((c * 9) / (5)) + 32
+    l3.config(text=f)
+
+
+win = Tk()
+win.geometry("300x250")
+win.config(bg="#9AB")
+
+l1 = Label(win, text="Enter temperature in Celsius: ",
+           font=("Arial", 10, "bold"), fg="white", bg="#9AB")
+l2 = Label(win, text="Temperature in Fahrenheit is: ",
+           font=("Arial", 10, "bold"), fg="white", bg="#9AB")
+l3 = Label(win, width=15, height=0)
+e1 = Entry(win, font=('Arial', 10))
+btn1 = Button(win, text="Convert to Fahrenheit!",
+              font=("Arial", 10), command=convert)
+btn2 = Button(win, text="Exit application",
+              font=("Arial", 10), command=exit)
+
+l1.pack(pady=5)
+e1.pack(pady=5)
+btn1.pack(pady=10)
+l2.pack(pady=10)
+l3.pack(pady=5)
+btn2.pack(pady=5)
+
+win.mainloop()
+
+______________________________________________________________________________________________________________________________
+
+8B
+
+from tkinter import *
+def order():
+    sname=txtname.get(1.0,"end")
+    q=(qua.get())
+    l1.config(text="Hello "+sname+"Your Order of "+q+"Pizza with "+var.get()+" "+var1.get()+" "+var2.get()+var3.get()+" Toppings will be delivered shortly")
+
+root=Tk()
+root.title("Express Pizza")
+root.geometry("500x400")
+
+Label(root,text="Enter your Name:" ,fg="blue").place(x=10,y=20)
+txtname=Text(root,width=15,height=1)
+txtname.focus()
+txtname.place(x=120,y=20)
+Label(root,text="Quantity: ",fg="blue").place(x=10,y=60)
+qua=Spinbox(root,from_=1,to=10,width=3)
+qua.place(x=120,y=60)
+Label(root,text="Size: ",fg="blue").place(x=10,y=100)
+var = StringVar(value="Small")
+r1=Radiobutton(root,text="Small",variable=var,value="Small",).place(x=120,y=100)
+r2=Radiobutton(root,text="Medium", variable=var,value="Medium").place(x=200,y=100)
+r3=Radiobutton(root,text="Large",variable=var,value="Large").place(x=280,y=100)
+f=LabelFrame(root,text="Pizza Toppings",height=150, width=180,bd=4,fg="blue").place(x=10,y=140)
+var1=StringVar()
+var2=StringVar()
+var3=StringVar()
+cb1 = Checkbutton(root,text="BabyCorn",variable=var1,offvalue="",onvalue="BabyCorn").place(x=20,y=170)
+cb2 = Checkbutton(root,text="Cheese",variable=var2,offvalue="",onvalue="Cheese").place(x=20,y=200)
+cb3 = Checkbutton(root,text="Onion",variable=var3,offvalue="",onvalue="Onion").place(x=20,y=230)
+b=Button(root,text="Order Now",command=order).place(x=200,y=300)
+l1=Label(root,fg="blue")
+l1.place(x=30,y=330)
+root.mainloop()
+
+______________________________________________________________________________________________________________________________
+
+#GUI Program to Add Two Numbers:
+
+from tkinter import *
+ 
+def add_numbers():
+    res=int(e1.get())+int(e2.get())
+    label_text.set(res)
+ 
+window = Tk()
+label_text=StringVar();
+Label(window, text="Enter First Number:").grid(row=0, sticky=W)
+Label(window, text="Enter Second Number:").grid(row=1, sticky=W)
+Label(window, text="Result of Addition:").grid(row=3, sticky=W)
+result=Label(window, text="", textvariable=label_text).grid(row=3,column=1, sticky=W)
+ 
+e1 = Entry(window)
+e2 = Entry(window)
+ 
+e1.grid(row=0, column=1)
+e2.grid(row=1, column=1)
+ 
+b = Button(window, text="Calculate", command=add_numbers)
+b.grid(row=0, column=2,columnspan=2, rowspan=2,sticky=W+E+N+S, padx=5, pady=5)
+ 
+ 
+mainloop()
+_________________________________________________________________________________________________________________________________________
+
+Write a program to create GUI to input a number and check if it is even or odd.
+
+from tkinter import *
+def submit():
+    us=int( entry.get())
+    if us%2==0:
+        new=Tk()
+        li=Label(new,text="number is even").pack()
+        new.mainloop()
+    else:
+        new=Tk()
+        li=Label(new,text="number is odd").pack()
+        new.mainloop()
+window = Tk()
+entry = Entry(window,font=("Arial",50),fg="#00FF00",bg="black")
+entry.pack(side=LEFT)
+submit_button = Button(window,text="submit",command=submit)
+submit_button.pack(side=RIGHT)
+window.mainloop()
